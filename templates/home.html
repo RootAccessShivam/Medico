@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if not user.is_authenticated %}
+<div class="alert alert-warning">
+    Please <a href="/login/">login</a> to book an appointment.
+</div>
+{% endif %}
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+    <div class="hero-content">
+        <h1>Advanced Healthcare Solutions</h1>
+        <p>Trusted care, expert doctors, and easy appointment booking</p>
+
+        <div class="mt-4">
+            <a href="#appointment" class="btn btn-light btn-lg me-2">Book Appointment</a>
+            <a href="#doctors" class="btn btn-outline-light btn-lg">Find Doctors</a>
+        </div>
+    </div>
+</div>
+
+<!-- ===== QUICK APPOINTMENT ===== -->
+<section id="appointment" class="container mt-5">
+    <div class="card shadow p-4">
+        <h3 class="mb-3">Book an Appointment</h3>
+
+        {% if success %}
+        <div class="alert alert-success">
+            Appointment booked successfully!
+        </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+                    <input type="text" name="name" class="form-control" placeholder="Full Name" required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <input type="date" name="date" class="form-control" required>
+                </div>
+
+                <!-- ✅ UPDATED: Dynamic Doctor Dropdown -->
+                <div class="col-md-6 mb-3">
+                    <select name="doctor" class="form-control" required>
+                        <option value="">Select Doctor</option>
+                        {% for doc in doctors %}
+                            <option value="{{ doc.id }}">
+                                {{ doc.name }} - {{ doc.specialization }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+            </div>
+
+            <button class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</section>
+
+<!-- ===== DOCTORS (DYNAMIC) ===== -->
+<section id="doctors" class="container text-center mt-5">
+    <h2 class="mb-4">Our Doctors</h2>
+
+    <div class="row">
+        {% for doc in doctors %}
+        <div class="col-md-4 mb-4">
+            <div class="card p-3">
+                <h5>{{ doc.name }}</h5>
+                <p>{{ doc.specialization }}</p>
+            </div>
+        </div>
+        {% empty %}
+        <p>No doctors available</p>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="container text-center mt-5">
+    <h2 class="mb-4">Our Services</h2>
+
+    <div class="row">
+        <div class="col-md-3 mb-3"><div class="card p-3"><h6>Emergency Care</h6></div></div>
+        <div class="col-md-3 mb-3"><div class="card p-3"><h6>Pharmacy</h6></div></div>
+        <div class="col-md-3 mb-3"><div class="card p-3"><h6>Diagnostics</h6></div></div>
+        <div class="col-md-3 mb-3"><div class="card p-3"><h6>Consultation</h6></div></div>
+    </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="container mt-5">
+    <div class="bg-white p-4 shadow rounded">
+        <h3>About Our Hospital</h3>
+        <p>
+            Medico provides high-quality healthcare services with experienced doctors,
+            modern facilities, and a patient-friendly environment. Our goal is to ensure
+            quick and reliable medical assistance.
+        </p>
+    </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="container mt-5 mb-5 text-center">
+    <h3>Contact Us</h3>
+    <p>📞 +91 8957595245 | 📧 medico@gmail.com | 📍 India</p>
+</section>
+
+{% endblock %}

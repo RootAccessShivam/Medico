@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4 fw-bold">Our Expert Doctors</h2>
+
+    <div class="row">
+
+        {% for doc in doctors %}
+        <div class="col-md-4 col-lg-3 mb-4">
+            <div class="card doctor-card text-center p-3">
+
+                <!-- Doctor Image -->
+                <img src="{% static 'images/doctor.png' %}" 
+                     class="rounded-circle mx-auto mb-3"
+                     style="width: 120px; height: 120px; object-fit: cover;">
+
+                <h5 class="fw-bold">{{ doc.name }}</h5>
+
+                <p class="text-muted">{{ doc.specialization }}</p>
+
+                <a href="#" class="btn btn-outline-primary btn-sm">View Profile</a>
+
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+<style>
+.doctor-card {
+    border-radius: 15px;
+    border: none;
+    transition: 0.3s;
+    background: white;
+}
+
+.doctor-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+</style>
+
+{% endblock %}

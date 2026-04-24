@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Your Appointments</h2>
+
+    {% if appointments %}
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center">
+
+            <thead class="table-primary">
+                <tr>
+                    <th>#</th>
+                    <th>Doctor</th>
+                    <th>Specialization</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for app in appointments %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ app.doctor.name }}</td>
+                    <td>{{ app.doctor.specialization }}</td>
+                    <td>{{ app.date }}</td>
+
+                    <td>
+                        <a href="{% url 'cancel_appointment' app.id %}" 
+                           class="btn btn-danger btn-sm"
+                           onclick="return confirm('Cancel this appointment?')">
+                           Cancel
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
+    {% else %}
+        <div class="alert alert-info">
+            No appointments booked yet.
+        </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}
