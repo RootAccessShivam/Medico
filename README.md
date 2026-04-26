@@ -29,29 +29,27 @@ It allows users to register, log in, book appointments with doctors, and contact
 ## 📂 Project Structure
 medico/
 │
-├── account/ # Main app (models, views, urls)
-├── medico/ # Project settings
-├── templates/ # HTML templates
-├── static/ # CSS, images
-├── db.sqlite3 # Database (ignored in Git)
+├── account/
+├── medico/
+├── templates/
+├── static/
+├── images/
 └── manage.py
 
+---
 
 ## ⚙️ How to Run the Project
 
 ### 1️⃣ Clone the repository
 ```bash
 git clone https://github.com/RootAccessShivam/Medico.git
-cd Medic
+cd Medico
 pip install django
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
-Open:http://127.0.0.1:8000/
 python manage.py createsuperuser
-http://127.0.0.1:8000/admin
 
-'''md 
 ## 📸 Screenshots
 
 ### 🏠 Home Page
