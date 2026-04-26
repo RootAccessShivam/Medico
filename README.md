@@ -37,19 +37,28 @@ medico/
 └── manage.py
 
 
----
-
 ## ⚙️ How to Run the Project
 
 ### 1️⃣ Clone the repository
 ```bash
 git clone https://github.com/RootAccessShivam/Medico.git
-cd Medico
+cd Medic
 pip install django
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
-http://127.0.0.1:8000/
-Admin Panel
+Open:http://127.0.0.1:8000/
 python manage.py createsuperuser
-http://127.0.0.1:8000/admin/
+http://127.0.0.1:8000/admin
+
+'''md 
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home](images/home.png)
+
+### 🔐 Login Page
+![Login](images/login.png)
+
+### 📊 Dashboard
+![Dashboard](images/dashboard.png)
