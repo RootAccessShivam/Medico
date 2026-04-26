@@ -48,7 +48,9 @@ pip install django
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
+Open: http://127.0.0.1:8000/
 python manage.py createsuperuser
+Open: http://127.0.0.1:8000/admin/
 ```
 
 ## 📸 Screenshots
@@ -61,3 +63,12 @@ python manage.py createsuperuser
 
 ### 📊 Dashboard
 ![Dashboard](images/dashboard.png)
+
+
+👨‍💻 Author
+Shivam Kumar Yadav
+GitHub: https://github.com/RootAccessShivam
+
+📜 License
+This project is for educational purposes.
+
